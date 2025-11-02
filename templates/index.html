@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>📊 Micro-Dashboard</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 20px;
+      background: #f4f6f8;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #222;
+      font-size: 2.2em;
+    }
+
+    /* Cada gráfico em uma linha */
+    .chart {
+      background: #fff;
+      padding: 10px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      margin-bottom: 30px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    /* Ajuste de tamanho dos gráficos internos */
+    .chart iframe,
+    .chart svg,
+    .chart canvas {
+      width: auto !important;
+      height: auto !important;
+    }
+
+    /* Insights */
+    .insight-box {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      max-width: 800px;
+      margin: 0 auto 40px auto;
+    }
+
+    .insight-box h2 {
+      margin-bottom: 15px;
+      font-size: 1.6em;
+      color: #444;
+    }
+
+    .insight-box ul {
+      list-style: inside disc;
+    }
+
+    .insight-box li {
+      margin: 8px 0;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 1.8em; }
+    }
+  </style>
+</head>
+<body>
+  <h1>📊 Micro-Dashboard de Vendas</h1>
+
+  <div class="chart">{{ trend_html|safe }}</div>
+  <div class="chart">{{ bars_html|safe }}</div>
+  <div class="chart">{{ corr_html|safe }}</div>
+
+  <div class="insight-box">
+    <h2>🔍 Insights Automáticos</h2>
+    <ul>
+      {% for item in insights %}
+        <li>{{ item }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+</body>
+</html>
